@@ -42,6 +42,11 @@ export class AppComponent {
   }
 
   editTodo(event, id, newTitle) {
+    if (event.which === 27) {
+      this.toggleEdit(id);
+      return;
+    }
+
     if (event.which === 13) {
       var found = this._findTodo(id);
       found.title = newTitle;
