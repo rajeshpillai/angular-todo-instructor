@@ -6,8 +6,8 @@
   </form>
 
   <ul class="todos">
-    <li class="todo-item" *ngFor="let todo of todos">
-      
+    <li class="todo-item" *ngFor="let todo of store.todos">
+
       <input *ngIf="todo.edit" #dirtyTodo 
          (keyup)="editTodo($event, todo.id, dirtyTodo.value)" 
         value={{todo.title}} />

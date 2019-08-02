@@ -8,10 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular TODO App';
 
-  todos = [
-    { id: 1, title: "Task 1", completed: false, edit: false },
-    { id: 2, title: "Task 2", completed: false, edit: false }
-  ];
+  store = {
+    todos: [
+      { id: 1, title: "Task 1", completed: false, edit: false },
+      { id: 2, title: "Task 2", completed: false, edit: false }
+    ]
+  }
 
   addTodo(newTodo: HTMLInputElement) {
     var todo = {
@@ -20,19 +22,19 @@ export class AppComponent {
       completed: false,
       edit: false  //todo:
     }
-    this.todos.push(todo);
-    this.log(this.todos);
+    this.store.todos.push(todo);
+    this.log(this.store.todos);
     return false;
   }
 
   deleteTodo(id) {
     let confirm = window.confirm(`Are you sure you want to delete the todo?`);
     if (!confirm) return;
-    var newTodos = this.todos.filter((todo) => {
+    var newTodos = this.store.todos.filter((todo) => {
       return todo.id != id;
     });
 
-    this.todos = newTodos;
+    this.store.todos = newTodos;
   }
 
   toggleEdit(id) {
@@ -55,7 +57,7 @@ export class AppComponent {
   }
 
   _findTodo(id) {
-    var todoItem = this.todos.find((todo) => {
+    var todoItem = this.store.todos.find((todo) => {
       return todo.id == id;
     });
     return todoItem;
