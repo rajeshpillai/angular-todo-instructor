@@ -5,6 +5,9 @@
   font-size: 2em;
   text-transform: uppercase;
 }
+.input-title {
+  width:60%;  
+}
 .todos {
   margin: 0;
   padding: 0;
