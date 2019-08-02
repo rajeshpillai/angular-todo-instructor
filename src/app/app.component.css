@@ -1,0 +1,43 @@
+*{
+  font-family: 'Courier New', Courier, monospace;
+}
+.app-title {
+  font-size: 2em;
+  text-transform: uppercase;
+}
+.todos {
+  margin: 0;
+  padding: 0;
+  font-size: 1.4em;
+  margin-top: 10px;
+  border: 1px solid #0077C0;
+}
+.todo-item {
+  display: flex;
+  flex: 1;
+}
+.todo-title {
+  flex: 1;
+}
+
+.buttons {
+  box-sizing: border-box;
+  display: flex;
+}
+
+.todo-item button  {
+  border: 1px solid #0077C0;
+  background: none;
+  box-shadow: none;
+  margin: 5px;
+}
+
+.buttons delete {
+  background-color: "";
+}
+
+.todo-item button:hover {
+  border: 1px solid #0077C0;
+  background: #A6A6A6;
+  box-shadow: none;
+}

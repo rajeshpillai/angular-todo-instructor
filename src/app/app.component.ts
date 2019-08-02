@@ -8,7 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular TODO App';
 
-  todos = [];
+  todos = [
+    { title: "Task 1", completed: false },
+    { title: "Task 2", completed: false }
+  ];
 
   addTodo(newTodo: HTMLInputElement) {
     var todo = {

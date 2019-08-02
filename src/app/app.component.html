@@ -1,13 +1,18 @@
 <div>
-  <h2>Todo</h2>
+  <h2 class="app-title">Todo</h2>
   <form>
     <input name="todo" type="text" #newTodo />
     <button (click)="addTodo(newTodo)">SUBMIT</button>
   </form>
 
-  <ul>
-    <li *ngFor="let todo of todos">
-      {{todo.title}}
+  <ul class="todos">
+    <li class="todo-item" *ngFor="let todo of todos">
+      <span class="todo-title">{{todo.title}}</span>
+      <span class="buttons">
+        <button>&#x270D;</button>
+        <button class="delete">&#x2716;</button>
+        <button>&#x2606;</button>
+      </span>
     </li>
   </ul>
 </div>
