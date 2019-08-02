@@ -12,7 +12,9 @@ export class AppComponent {
     todos: [
       { id: 1, title: "Task 1", completed: false, edit: false },
       { id: 2, title: "Task 2", completed: false, edit: false }
-    ]
+    ],
+    // {todoId: <>,  bookmarked: true/false}
+    bookmarks: []
   }
 
   addTodo(newTodo: HTMLInputElement) {
@@ -61,6 +63,31 @@ export class AppComponent {
       return todo.id == id;
     });
     return todoItem;
+  }
+
+  _isTodoBookmarked(todoId) {
+    console.log(`checking bookmark status...`)
+    var todoItem = this.store.bookmarks.find((bm) => {
+      return bm.todoId == todoId;
+    });
+
+    return todoItem;
+  }
+
+  toggleBookmark(todoId) {
+    var bookmark = this.store.bookmarks.find((bm) => {
+      return bm.todoId == todoId;
+    });
+
+    if (!bookmark) {
+      this.store.bookmarks = [{ todoId: todoId, bookmarked: true }, ...this.store.bookmarks]
+    } else {
+      this.store.bookmarks = this.store.bookmarks.filter((b) => {
+        return b.todoId != todoId
+      })
+    }
+
+    console.log("bm:", this.store.bookmarks);
   }
 
   log(...args) {

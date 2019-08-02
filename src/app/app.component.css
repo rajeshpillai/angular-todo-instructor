@@ -44,3 +44,7 @@
   background: #A6A6A6;
   box-shadow: none;
 }
+
+.buttons .bookmarked span{
+  color: red;
+}
