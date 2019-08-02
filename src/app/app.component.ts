@@ -17,7 +17,8 @@ export class AppComponent {
     var todo = {
       id: +new Date(),
       title: newTodo.value,
-      completed: false
+      completed: false,
+      edit: false  //todo:
     }
     this.todos.push(todo);
     this.log(this.todos);
@@ -35,11 +36,24 @@ export class AppComponent {
   }
 
   toggleEdit(id) {
-    var todoEdit = this.todos.find((todo) => {
-      return todo.id == id;
-    });
+    var todoEdit = this._findTodo(id);
     todoEdit.edit = !todoEdit.edit;
     this.log("edit: ", todoEdit);
+  }
+
+  editTodo(event, id, newTitle) {
+    if (event.which === 13) {
+      var found = this._findTodo(id);
+      found.title = newTitle;
+      this.toggleEdit(id);
+    }
+  }
+
+  _findTodo(id) {
+    var todoItem = this.todos.find((todo) => {
+      return todo.id == id;
+    });
+    return todoItem;
   }
 
   log(...args) {
