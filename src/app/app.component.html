@@ -7,9 +7,11 @@
 
   <ul class="todos">
     <li class="todo-item" *ngFor="let todo of todos">
-      <span class="todo-title">{{todo.title}}</span>
+      <input *ngIf="todo.edit" value={{todo.title}} />
+      <span *ngIf="!todo.edit" class="todo-title">{{todo.title}}</span>
+
       <span class="buttons">
-        <button>&#x270D;</button>
+        <button (click)="toggleEdit(todo.id)">&#x270D;</button>
         <button class="delete" (click)="deleteTodo(todo.id)">&#x2716;</button>
         <button>&#x2606;</button>
       </span>

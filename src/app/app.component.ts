@@ -9,8 +9,8 @@ export class AppComponent {
   title = 'Angular TODO App';
 
   todos = [
-    { id: 1, title: "Task 1", completed: false },
-    { id: 2, title: "Task 2", completed: false }
+    { id: 1, title: "Task 1", completed: false, edit: false },
+    { id: 2, title: "Task 2", completed: false, edit: false }
   ];
 
   addTodo(newTodo: HTMLInputElement) {
@@ -34,7 +34,17 @@ export class AppComponent {
     this.todos = newTodos;
   }
 
-  log(o) {
-    console.log(JSON.stringify(o));
+  toggleEdit(id) {
+    var todoEdit = this.todos.find((todo) => {
+      return todo.id == id;
+    });
+    todoEdit.edit = !todoEdit.edit;
+    this.log("edit: ", todoEdit);
+  }
+
+  log(...args) {
+    for (var i = 0; i < args.length; i++) {
+      console.log(JSON.stringify(args[i]));
+    }
   }
 }
