@@ -9,12 +9,13 @@ export class AppComponent {
   title = 'Angular TODO App';
 
   todos = [
-    { title: "Task 1", completed: false },
-    { title: "Task 2", completed: false }
+    { id: 1, title: "Task 1", completed: false },
+    { id: 2, title: "Task 2", completed: false }
   ];
 
   addTodo(newTodo: HTMLInputElement) {
     var todo = {
+      id: +new Date(),
       title: newTodo.value,
       completed: false
     }
