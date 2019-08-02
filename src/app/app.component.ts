@@ -24,6 +24,16 @@ export class AppComponent {
     return false;
   }
 
+  deleteTodo(id) {
+    let confirm = window.confirm(`Are you sure you want to delete the todo?`);
+    if (!confirm) return;
+    var newTodos = this.todos.filter((todo) => {
+      return todo.id != id;
+    });
+
+    this.todos = newTodos;
+  }
+
   log(o) {
     console.log(JSON.stringify(o));
   }

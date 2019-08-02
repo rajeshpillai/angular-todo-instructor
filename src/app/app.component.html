@@ -10,7 +10,7 @@
       <span class="todo-title">{{todo.title}}</span>
       <span class="buttons">
         <button>&#x270D;</button>
-        <button class="delete">&#x2716;</button>
+        <button class="delete" (click)="deleteTodo(todo.id)">&#x2716;</button>
         <button>&#x2606;</button>
       </span>
     </li>
