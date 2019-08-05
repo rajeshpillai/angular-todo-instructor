@@ -108,7 +108,6 @@ export class AppComponent {
   onFilterChange(event) {
     var action = event.target.name.toLowerCase();
     this.filterAction = action;
-    console.log(action);
     switch (action) {
       case "all":
         this.store.filteredTodos = [...this.store.todos];
