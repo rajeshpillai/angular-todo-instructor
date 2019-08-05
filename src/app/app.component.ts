@@ -66,7 +66,7 @@ export class AppComponent {
   }
 
   _isTodoBookmarked(todoId) {
-    console.log(`checking bookmark status...`)
+    //console.log(`checking bookmark status...`)
     var todoItem = this.store.bookmarks.find((bm) => {
       return bm.todoId == todoId;
     });
@@ -88,6 +88,12 @@ export class AppComponent {
     }
 
     console.log("bm:", this.store.bookmarks);
+  }
+
+  toggleCompleted( id) {
+    var found = this._findTodo(id);
+    found.completed = !found.completed;
+    console.log(`toggle todo ${id} to ${found.completed}`);
   }
 
   log(...args) {

@@ -10,7 +10,9 @@
 
       <input *ngIf="todo.edit" #dirtyTodo (keyup)="editTodo($event, todo.id, dirtyTodo.value)" value={{todo.title}} />
 
-      <span *ngIf="!todo.edit" class="todo-title">{{todo.title}}</span>
+      <span *ngIf="!todo.edit" 
+        [class.completed]="todo.completed"
+        (dblclick)="toggleCompleted(todo.id)" class="todo-title">{{todo.title}}</span>
 
       <span class="buttons">
         <button (click)="toggleEdit(todo.id)">&#x270D;</button>

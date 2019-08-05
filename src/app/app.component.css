@@ -18,6 +18,8 @@
 .todo-item {
   display: flex;
   flex: 1;
+  cursor: pointer;
+  user-select: none;
 }
 .todo-title {
   flex: 1;
@@ -47,4 +49,8 @@
 
 .buttons .bookmarked span{
   color: red;
+}
+
+.completed {
+  text-decoration-line: line-through;
 }
