@@ -13,8 +13,17 @@ export class AppComponent {
       { id: 1, title: "Task 1", completed: false, edit: false },
       { id: 2, title: "Task 2", completed: false, edit: false }
     ],
+    filteredTodos: [],
     // {todoId: <>,  bookmarked: true/false}
     bookmarks: []
+  }
+
+
+  filterAction = "all";
+
+
+  constructor() {
+    this.store.filteredTodos = [...this.store.todos];
   }
 
   addTodo(newTodo: HTMLInputElement) {
@@ -90,10 +99,33 @@ export class AppComponent {
     console.log("bm:", this.store.bookmarks);
   }
 
-  toggleCompleted( id) {
+  toggleCompleted(id) {
     var found = this._findTodo(id);
     found.completed = !found.completed;
     console.log(`toggle todo ${id} to ${found.completed}`);
+  }
+
+  onFilterChange(event) {
+    var action = event.target.name.toLowerCase();
+    this.filterAction = action;
+    console.log(action);
+    switch (action) {
+      case "all":
+        this.store.filteredTodos = [...this.store.todos];
+        break;
+      case "completed":
+        this.store.filteredTodos = this.store.todos.filter((todo) => {
+          return todo.completed;
+        });
+        break;
+      case "bookmarked":
+        this.store.filteredTodos = this.store.todos.filter((todo) => {
+          if (this._isTodoBookmarked(todo.id))
+            return todo;
+        });
+        break;
+    }
+    console.log(this.store.filteredTodos);
   }
 
   log(...args) {

@@ -54,3 +54,20 @@
 .completed {
   text-decoration-line: line-through;
 }
+
+.filter-container {
+  margin-top: 20px;
+  padding-right: 5px;
+  padding-bottom: 20px;
+}
+
+
+.filter-container  a {
+  text-decoration-line: none;
+  padding: 10px;
+}
+
+a.filter-current {
+  text-decoration: underline;
+  background: #AAA9AD;
+}

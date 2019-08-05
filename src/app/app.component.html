@@ -5,14 +5,19 @@
     <button (click)="addTodo(newTodo)">SUBMIT</button>
   </form>
 
+  <div class="filter-container" (click)="onFilterChange($event)">
+      <a [class.filter-current]="filterAction=='all'" name="all" href="#">ALL</a>
+      <a [class.filter-current]="filterAction=='completed'" name="completed" href="#">COMPLETED</a>
+      <a [class.filter-current]="filterAction=='bookmarked'" name="bookmarked" href="#">BOOKMARKED</a>
+  </div>
+
   <ul class="todos">
-    <li class="todo-item" *ngFor="let todo of store.todos">
+    <li class="todo-item" *ngFor="let todo of store.filteredTodos">
 
       <input *ngIf="todo.edit" #dirtyTodo (keyup)="editTodo($event, todo.id, dirtyTodo.value)" value={{todo.title}} />
 
-      <span *ngIf="!todo.edit" 
-        [class.completed]="todo.completed"
-        (dblclick)="toggleCompleted(todo.id)" class="todo-title">{{todo.title}}</span>
+      <span *ngIf="!todo.edit" [class.completed]="todo.completed" (dblclick)="toggleCompleted(todo.id)"
+        class="todo-title">{{todo.title}}</span>
 
       <span class="buttons">
         <button (click)="toggleEdit(todo.id)">&#x270D;</button>
