@@ -35,6 +35,7 @@ export class AppComponent {
     }
     this.store.todos.push(todo);
     this.log(this.store.todos);
+    this.changeFilter(this.filterAction);
     return false;
   }
 
@@ -46,6 +47,7 @@ export class AppComponent {
     });
 
     this.store.todos = newTodos;
+    this.changeFilter(this.filterAction);
   }
 
   toggleEdit(id) {
@@ -108,6 +110,10 @@ export class AppComponent {
   onFilterChange(event) {
     var action = event.target.name.toLowerCase();
     this.filterAction = action;
+    this.changeFilter(action);
+  }
+
+  changeFilter(action) {
     switch (action) {
       case "all":
         this.store.filteredTodos = [...this.store.todos];
