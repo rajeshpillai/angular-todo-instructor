@@ -11,6 +11,8 @@
     <a [class.filter-current]="filterAction=='bookmarked'" name="bookmarked" href="#">BOOKMARKED</a>
   </div>
 
+  <div *ngIf="store.filteredTodos.length===0">{{noTodoMessage}} :)</div>
+
   <ul class="todos">
     <li class="todo-item" *ngFor="let todo of store.filteredTodos">
 

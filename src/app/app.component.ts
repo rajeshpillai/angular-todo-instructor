@@ -18,6 +18,8 @@ export class AppComponent {
     bookmarks: []
   }
 
+  noTodoMessage = "There are no todos.  Be awesome and create some!";
+
 
   filterAction = "all";
 
