@@ -18,11 +18,10 @@ export class AppComponent {
     bookmarks: []
   }
 
-  noTodoMessage = "There are no todos.  Be awesome and create some!";
-
 
   filterAction = "all";
 
+  noTodoMessage = `There are no todos for selected filter!`;
 
   constructor() {
     this.store.filteredTodos = [...this.store.todos];
