@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from './models/todo.model';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,8 @@ export class AppComponent {
 
   store = {
     todos: [
-      { id: 1, title: "Task 1", completed: false, edit: false },
-      { id: 2, title: "Task 2", completed: false, edit: false }
+      new Todo({ id: 1, title: "Task 1", completed: false, edit: false }),
+      new Todo({ id: 2, title: "Task 2", completed: false, edit: false })
     ],
     filteredTodos: [],
     // {todoId: <>,  bookmarked: true/false}
@@ -28,12 +29,13 @@ export class AppComponent {
   }
 
   addTodo(newTodo: HTMLInputElement) {
-    var todo = {
+    var todo = new Todo({
       id: +new Date(),
       title: newTodo.value,
       completed: false,
       edit: false  //todo:
-    }
+    });
+    
     this.store.todos.push(todo);
     this.log(this.store.todos);
     this.changeFilter(this.filterAction);
