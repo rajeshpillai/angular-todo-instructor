@@ -1,8 +1,8 @@
-<div>
+<div class="app">
   <h2 class="app-title">Todo Engine</h2>
-  <form>
+  <form class="todo-form">
     <input class="input-title" name="todo" type="text" #newTodo placeholder="what do you want to do?" />
-    <button (click)="addTodo(newTodo)">SUBMIT</button>
+    <button class="button primary" (click)="addTodo(newTodo)">SUBMIT</button>
   </form>
 
   <div class="filter-container" (click)="onFilterChange($event)">

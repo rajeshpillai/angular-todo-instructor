@@ -1,6 +1,12 @@
 *{
   font-family: 'Courier New', Courier, monospace;
 }
+
+.app {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .app-title {
   font-size: 2em;
   text-transform: uppercase;
@@ -8,7 +14,13 @@
 .input-title {
   width:60%;  
 }
+
+.todo-form {
+  width: 60%;
+}
+
 .todos {
+  width: 60%;
   margin: 0;
   padding: 0;
   font-size: 1.4em;
@@ -70,3 +82,18 @@ a.filter-current {
   text-decoration: underline;
   background: #AAA9AD;
 }
+
+
+input[type="submit"].primary, button.primary
+{
+ border: 0;
+ background: none;
+ box-shadow: none;
+ border-radius: 0px;
+ cursor: pointer;
+ background: #3498db;
+ height: 1.6em;
+ color: white;
+}
+
+
