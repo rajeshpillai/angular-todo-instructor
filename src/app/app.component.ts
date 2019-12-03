@@ -39,6 +39,7 @@ export class AppComponent {
     this.store.todos.push(todo);
     this.log(this.store.todos);
     this.changeFilter(this.filterAction);
+    newTodo.value = '';
     return false;
   }
 
