@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { Todo } from './models/todo.model';
+import { Component } from "@angular/core";
+import { Todo } from "./models/todo.model";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = 'Angular TODO App';
+  title = "Angular TODO App";
 
   store = {
     todos: [
@@ -17,8 +17,7 @@ export class AppComponent {
     filteredTodos: [],
     // {todoId: <>,  bookmarked: true/false}
     bookmarks: []
-  }
-
+  };
 
   filterAction = "all";
 
@@ -33,19 +32,20 @@ export class AppComponent {
       id: +new Date(),
       title: newTodo.value,
       completed: false,
-      edit: false  //todo:
+      edit: false //todo:
     });
-    
+
     this.store.todos.push(todo);
     this.log(this.store.todos);
     this.changeFilter(this.filterAction);
+    newTodo.value = "";
     return false;
   }
 
   deleteTodo(id) {
     let confirm = window.confirm(`Are you sure you want to delete the todo?`);
     if (!confirm) return;
-    var newTodos = this.store.todos.filter((todo) => {
+    var newTodos = this.store.todos.filter(todo => {
       return todo.id != id;
     });
 
@@ -73,7 +73,7 @@ export class AppComponent {
   }
 
   _findTodo(id) {
-    var todoItem = this.store.todos.find((todo) => {
+    var todoItem = this.store.todos.find(todo => {
       return todo.id == id;
     });
     return todoItem;
@@ -81,7 +81,7 @@ export class AppComponent {
 
   _isTodoBookmarked(todoId) {
     //console.log(`checking bookmark status...`)
-    var todoItem = this.store.bookmarks.find((bm) => {
+    var todoItem = this.store.bookmarks.find(bm => {
       return bm.todoId == todoId;
     });
 
@@ -89,16 +89,19 @@ export class AppComponent {
   }
 
   toggleBookmark(todoId) {
-    var bookmark = this.store.bookmarks.find((bm) => {
+    var bookmark = this.store.bookmarks.find(bm => {
       return bm.todoId == todoId;
     });
 
     if (!bookmark) {
-      this.store.bookmarks = [{ todoId: todoId, bookmarked: true }, ...this.store.bookmarks]
+      this.store.bookmarks = [
+        { todoId: todoId, bookmarked: true },
+        ...this.store.bookmarks
+      ];
     } else {
-      this.store.bookmarks = this.store.bookmarks.filter((b) => {
-        return b.todoId != todoId
-      })
+      this.store.bookmarks = this.store.bookmarks.filter(b => {
+        return b.todoId != todoId;
+      });
     }
 
     console.log("bm:", this.store.bookmarks);
@@ -122,14 +125,13 @@ export class AppComponent {
         this.store.filteredTodos = [...this.store.todos];
         break;
       case "completed":
-        this.store.filteredTodos = this.store.todos.filter((todo) => {
+        this.store.filteredTodos = this.store.todos.filter(todo => {
           return todo.completed;
         });
         break;
       case "bookmarked":
-        this.store.filteredTodos = this.store.todos.filter((todo) => {
-          if (this._isTodoBookmarked(todo.id))
-            return todo;
+        this.store.filteredTodos = this.store.todos.filter(todo => {
+          if (this._isTodoBookmarked(todo.id)) return todo;
         });
         break;
     }
